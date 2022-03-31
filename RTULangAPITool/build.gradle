@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'com.github.ipecter.rtu.langAPI.tool.MakeCode'
+version = '1.0.0'
+jar {
+    manifest {
+        attributes  'Title': 'RTULangAPITool', 'Version': version, 'Main-Class': mainClassName
+    }
+    archiveName 'RTULangAPITool ' + version + '.jar'
+
+}
+
+def targetJavaVersion = 16
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+        options.release = targetJavaVersion
+    }
+}
