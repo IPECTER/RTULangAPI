@@ -9,6 +9,7 @@ public class MakeCode {
             genLangCode();
             genEntityCode();
             genItemCode();
+            genEnchantmentCode();
 
     }
 
@@ -82,5 +83,37 @@ public class MakeCode {
         code.append(name.replaceAll(" ", "_").toUpperCase());
         code.append("(Material.").append(" ,").append("\"").append(unlocalized).append("\"").append("),");
         return code.toString();
+    }
+    public static void genEnchantmentCode() throws IOException {
+        File langFile = new File("optimizedLangs/en_us.lang");
+        BufferedReader reader = new BufferedReader(new FileReader(langFile));
+        File output1 = new File("enchantment.txt");
+        File output2 = new File("enchantmentlevel.txt");
+        PrintWriter writer1 = new PrintWriter(output1, "UTF-8");
+        PrintWriter writer2 = new PrintWriter(output2, "UTF-8");
+        String temp = reader.readLine();
+        while (temp != null) {
+            if (temp.contains("=")) {
+                String[] tempStringArr = temp.split("=");
+                if (tempStringArr[0].startsWith("enchantment.") && !tempStringArr[0].startsWith("enchantment.level.") )
+                    writer1.println(getEnchantmentCode(tempStringArr[0], tempStringArr[1]));
+                else if(tempStringArr[0].startsWith("enchantment.level.")){
+                    writer2.println(getEnchantmentLevelCode(tempStringArr[0]));
+
+                }
+            }
+            temp = reader.readLine();
+        }
+        writer1.close();
+        writer2.close();
+        reader.close();
+    }
+
+    private static String getEnchantmentCode(String unlocalized, String name) {
+        return name.replaceAll(" ", "_").toUpperCase() + "(Enchantment." + name.replaceAll(" ", "_").toUpperCase() + " , " + "\"" + unlocalized + "\"" + "),";
+    }
+
+    private static String getEnchantmentLevelCode(String unlocalized) {
+        return "LEVEL"+unlocalized.replaceAll(" ", "_").replace("enchantment.level.", "") + "(" + unlocalized.replaceAll(" ", "_").replace("enchantment.level.", "") + " , " + "\"" + unlocalized + "\"" + "),";
     }
 }
