@@ -44,8 +44,7 @@ public enum EnumEnchantment {
     CHANNELING(Enchantment.CHANNELING , "enchantment.minecraft.channeling"),
     MULTISHOT(Enchantment.MULTISHOT , "enchantment.minecraft.multishot"),
     QUICK_CHARGE(Enchantment.QUICK_CHARGE , "enchantment.minecraft.quick_charge"),
-    PIERCING(Enchantment.PIERCING , "enchantment.minecraft.piercing"),
-    UNKNOWN_ENCHANTMENT(Enchantment. , "enchantment.unknown"),
+    PIERCING(Enchantment.PIERCING , "enchantment.minecraft.piercing");
 
     private static final Map<Enchantment, EnumEnchantment> lookup = new HashMap<>();
 
