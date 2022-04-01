@@ -57,7 +57,7 @@ public class MakeCode {
     }
 
     private static String getEntityCode(String unlocalized, String name) {
-        return name.replaceAll(" ", "_").toUpperCase() + "(EntityType." + " , " + "\"" + unlocalized + "\"" + "),";
+        return name.replaceAll(" ", "_").toUpperCase() + "(EntityType." +name.replaceAll(" ", "_").toUpperCase() + " , " + "\"" + unlocalized + "\"" + "),";
     }
 
     public static void genItemCode() throws IOException {
@@ -81,7 +81,7 @@ public class MakeCode {
     private static String getItemCode(String unlocalized, String name) {
         StringBuilder code = new StringBuilder();
         code.append(name.replaceAll(" ", "_").toUpperCase());
-        code.append("(Material.").append(" ,").append("\"").append(unlocalized).append("\"").append("),");
+        code.append("(Material.").append(name.replaceAll(" ", "_").toUpperCase()).append(" ,").append("\"").append(unlocalized).append("\"").append("),");
         return code.toString();
     }
     public static void genEnchantmentCode() throws IOException {
