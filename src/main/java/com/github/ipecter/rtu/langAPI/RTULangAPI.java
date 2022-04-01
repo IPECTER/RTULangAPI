@@ -1,12 +1,17 @@
 package com.github.ipecter.rtu.langAPI;
 
+
 import com.github.ipecter.rtu.langAPI.manager.RTULangManager;
 
-public final class RTULangAPI {
-    private static RTULangManager rtuLangManager = new RTULangManager();
-    public static RTULangManager getManager(){
-        return rtuLangManager;
+public class RTULangAPI {
+    
+    private RTULangAPI(){
+    }
+    private static class LazyHolder {
+        public static final RTULangManager INSTANCE = new RTULangManager();
+    }
+    public static RTULangManager getManager() {
+        return RTULangAPI.LazyHolder.INSTANCE;
     }
     
-
 }

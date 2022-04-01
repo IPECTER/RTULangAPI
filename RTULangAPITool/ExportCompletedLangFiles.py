@@ -28,7 +28,7 @@ for line in version_file:
             print(lang_name + ":")
             print(err)
 version_file.close()
-keep = '    "item.minecraft.', '    "potion.', '    "entity.minecraft.', '    "enchantment.'
+keep = '    "item.minecraft.', '    "entity.minecraft.', '    "enchantment.'
 try:
     os.makedirs("optimizedLangs", exist_ok=True)
 except OSError as err:
@@ -42,8 +42,8 @@ for lang_filename2 in os.listdir('originalLangs'):
 
     for line in version_file2:
         if line.startswith(keep):
-            simplified_version_file.write(line.replace('    "', '').replace('": "','=').replace('",', ''))
-			
+            if not line.__contains__("entity.minecraft.tropical_fish.") or not line.__contains__("entity.minecraft.villager.") or not line.__contains__("item.minecraft.bundle."): 
+                simplified_version_file.write(line.replace('    "', '').replace('": "','=').replace('",', '').replace("'", ""))
     print("Processed " + lang_filename2)
     version_file2.close()
     simplified_version_file.close()
