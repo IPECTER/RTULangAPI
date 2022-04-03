@@ -3,6 +3,17 @@
 
 **RTULangAPI.getManager()**
 
+- String **geEntityName(Entity, Player)**
+- String **geEntityName(Entity, String locale)**
+- String **geEntityName(EntityType, Player)**
+- String **geEntityName(EntityType, String locale)**
+
+  return Entity's localized Name
+  
+  - String **geEntityName(EntityType, String locale)**
+  
+  return Entity's localized Name
+  *if Entity has Custom Name, return custom name
 
 
 # Gradle&Maven
