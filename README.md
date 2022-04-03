@@ -10,11 +10,10 @@
 
   return Entity's localized Name
   
-  - String **geEntityName(EntityType, String locale)**
+- String **getEntityDisplayName(EntityType, String locale)**
   
   return Entity's localized Name
   *if Entity has Custom Name, return custom name
-
 
 # Gradle&Maven
 maven repo soon maybe...!
