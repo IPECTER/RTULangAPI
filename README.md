@@ -3,10 +3,14 @@
 
 **RTULangAPI.getManager()**
 
-- String **geEntityName(Entity, Player)**
-- String **geEntityName(Entity, String locale)**
-- String **geEntityName(EntityType, Player)**
-- String **geEntityName(EntityType, String locale)**
+- Void **init()**
+
+  **(!) You must use this method in onEnable() Method (!)**
+
+- String **getEntityName(Entity, Player)**
+- String **getEntityName(Entity, String locale)**
+- String **getEntityName(EntityType, Player)**
+- String **getEntityName(EntityType, String locale)**
 
   return Entity's localized Name
   
