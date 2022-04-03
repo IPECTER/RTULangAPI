@@ -4,16 +4,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 import com.github.ipecter.rtu.langAPI.enums.EnumEntity;
 import com.github.ipecter.rtu.langAPI.enums.EnumLang;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 public class RTULangManager {
-    
     /***
      * Only use this method when enabling plugin
      */
@@ -47,9 +48,8 @@ public class RTULangManager {
 
     public String translateToLocal(String unlocalizedName, String locale) {
         String result = EnumLang.get(locale.toLowerCase()).getMap().get(unlocalizedName);
-        return result != null ? result : "Unknown: " + unlocalizedName ;
+        return result != null ? StringEscapeUtils.unescapeJava(result) : "Unknown: " + unlocalizedName ;
     }
-
     public String getEntityName(Entity entity, Player player){
         return getEntityName(entity.getType(), player.getLocale());
     }
@@ -69,7 +69,7 @@ public class RTULangManager {
 
     public String getEntityDisplayName(Entity entity, String locale) {
         return entity.getCustomName() != null ? entity.getCustomName() :
-                getEntityName(entity, locale);
+                getEntityName(entity.getType(), locale);
     }
 
 

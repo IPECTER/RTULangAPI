@@ -43,7 +43,7 @@ for lang_filename2 in os.listdir('originalLangs'):
     for line in version_file2:
         if line.startswith(keep):
             if not line.__contains__("entity.minecraft.tropical_fish.") or not line.__contains__("entity.minecraft.villager.") or not line.__contains__("item.minecraft.bundle."): 
-                simplified_version_file.write(line.replace('    "', '').replace('": "','=').replace('",', '').replace("'", ""))
+                simplified_version_file.write(line.replace('    "', '').replace('": "','=').replace('",', '').replace("Bottleo'", "Bottleo"))
     print("Processed " + lang_filename2)
     version_file2.close()
     simplified_version_file.close()
