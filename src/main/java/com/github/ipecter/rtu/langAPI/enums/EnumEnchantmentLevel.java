@@ -14,7 +14,7 @@ public enum EnumEnchantmentLevel {
     LEVEL7(7, "enchantment.level.7"),
     LEVEL8(8, "enchantment.level.8"),
     LEVEL9(9, "enchantment.level.9"),
-    LEVEL10(10, "enchantment.level.10"),;
+    LEVEL10(10, "enchantment.level.10");
 
     private static final Map<Integer, EnumEnchantmentLevel> lookup = new HashMap<>();
 
