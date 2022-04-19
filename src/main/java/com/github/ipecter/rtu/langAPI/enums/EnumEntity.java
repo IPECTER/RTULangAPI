@@ -126,8 +126,14 @@ public enum EnumEntity {
     private static final Map<EntityType, EnumEntity> lookup = new HashMap<>();
 
     static {
-        for (EnumEntity entity : EnumSet.allOf(EnumEntity.class))
-            lookup.put(entity.getType(), entity);
+        for (EnumEntity entity : EnumSet.allOf(EnumEntity.class)){
+            try {
+                lookup.put(entity.getType(), entity);
+            }catch (Exception e){
+                continue;
+            }
+        }
+
     }
 
     private EntityType type;
